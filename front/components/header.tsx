@@ -7,7 +7,7 @@ export default function Header (){
                 <h2 className="text-white my-5 tracking-tight text-xl sm:text-2xl">Looking for Front-End/React opportunities</h2>
                 <p className="text-neutral-400 text-base mb-10">I build applications and create experiences on the web.</p>
                 <a href="https://www.linkedin.com/in/dominykas-rutkauskas-2bb282166/" target="_blank"
-                   className="text-slate-900 inline-block text-xl font-semibold bg-teal-400 px-6 py-3 sm:px-10 sm:py-5 rounded-lg hover:shadow-button transition-shadow">Contact me
+                   className="text-slate-900 inline-block text-[18px] font-semibold bg-teal-400 px-6 py-3 sm:px-10 sm:py-5 rounded-lg hover:shadow-button transition-shadow">Contact me
                 </a>
             </div>
             <div className="min-w-[300px] hidden sm:block">
