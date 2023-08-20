@@ -6,9 +6,57 @@ import Nav from "../components/nav";
 import {Key, useState} from "react";
 import Experience from "../components/experience";
 import {GetStaticProps} from "next";
+import Project from "../components/project";
 
-export default function Home({experiences}) {
-    const [section, setSection] = useState<string>("Experience")
+export default function Home({experiences, projects}) {
+    const [section, setSection] = useState<string>("Experience");
+
+    const navHandler = () => {
+        if (section === "Experience") {
+            return (
+                experiences.map((el: {
+                    _id: Key;
+                    company: string;
+                    job: string;
+                    end_date: string;
+                    start_date: string;
+                    responsibilities: string[];
+                }) => {
+                    return (
+                        <Experience
+                            key={el._id}
+                            company={el.company}
+                            job={el.job}
+                            endDate={el.end_date}
+                            startDate={el.start_date}
+                            responsibilities={el.responsibilities}
+                        />
+                    )
+                })
+            )
+        } else {
+            return (projects.map((el: {
+                _id: Key;
+                project: string;
+                github_url: string;
+                demo_url: string;
+                description: string;
+                stack: string[];
+            }) => {
+                return (
+                    <Project
+                        key={el._id}
+                        project={el.project}
+                        github={el.github_url}
+                        demo={el.demo_url}
+                        stack={el.stack}
+                        description={el.description}
+                    />
+                )
+            }))
+        }
+    }
+
     return (
         <>
             <Head>
@@ -19,18 +67,7 @@ export default function Home({experiences}) {
             <main>
                 <Introduction/>
                 <Nav section={section} setSection={setSection}/>
-                {experiences.map((el: { _id: Key; company: string; job: string; end_date: string; start_end: string; responsibilities: string[]; }) => {
-                    return (
-                        <Experience
-                            key={el._id}
-                            company={el.company}
-                            job={el.job}
-                            endDate={el.end_date}
-                            startDate={el.start_end}
-                            responsibilities={el.responsibilities}
-                        />
-                    )
-                })}
+                {navHandler()}
             </main>
         </>
     )
@@ -38,11 +75,13 @@ export default function Home({experiences}) {
 
 export const getStaticProps: GetStaticProps = async () => {
     const client = await MongoClient.connect(process.env.DBKEY);
-    const myData1 = await client.db().collection("experience").find().toArray();
+    const dataExp = await client.db().collection("experience").find().toArray();
+    const dataProj = await client.db().collection("projects").find().toArray();
     await client.close();
     return {
         props: {
-            experiences: JSON.parse(JSON.stringify(myData1))
+            experiences: JSON.parse(JSON.stringify(dataExp)),
+            projects: JSON.parse(JSON.stringify(dataProj))
         }
     }
 }

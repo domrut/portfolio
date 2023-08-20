@@ -2,10 +2,10 @@ export default function Experience ({company, endDate,job, responsibilities, sta
     return (
         <>
             <p>{company}</p>
+            <p>{startDate}</p>
             <p>{endDate}</p>
             <p>{job}</p>
             <p>{responsibilities}</p>
-            <p>{startDate}</p>
         </>
     )
 }
