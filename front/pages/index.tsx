@@ -20,12 +20,13 @@ export default function Home({experiences, projects}) {
                     job: string;
                     end_date: string;
                     start_date: string;
-                    responsibilities: string[];
-                }) => {
+                    company_url: string,
+                    responsibilities: string[]; }) => {
                     return (
                         <Experience
                             key={el._id}
                             company={el.company}
+                            companyUrl={el.company_url}
                             job={el.job}
                             endDate={el.end_date}
                             startDate={el.start_date}
@@ -41,8 +42,7 @@ export default function Home({experiences, projects}) {
                 github_url: string;
                 demo_url: string;
                 description: string;
-                stack: string[];
-            }) => {
+                stack: string[]; }) => {
                 return (
                     <Project
                         key={el._id}
@@ -67,7 +67,11 @@ export default function Home({experiences, projects}) {
             <main>
                 <Introduction/>
                 <Nav section={section} setSection={setSection}/>
-                {navHandler()}
+                <section className="group/side">
+                    <ul className="flex flex-wrap max-w-2xl mx-auto card:max-w-full card:m-auto [&>*]:group-hover/side:hover:opacity-50">
+                    {navHandler()}
+                    </ul>
+                </section>
             </main>
         </>
     )
