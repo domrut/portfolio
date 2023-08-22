@@ -1,16 +1,15 @@
-import Head from "next/head";
 import {MongoClient} from "mongodb";
-import Header from "../components/header";
 import Introduction from "../components/introduction";
 import Nav from "../components/nav";
-import {Key, useState} from "react";
+import {Key, useEffect, useState} from "react";
 import Experience from "../components/experience";
 import {GetStaticProps} from "next";
 import Project from "../components/project";
+import TopRightArrowIcon from "../components/svg/topRightArrow";
 
 export default function Home({experiences, projects}) {
     const [section, setSection] = useState<string>("Experience");
-
+    const [scrollPos, setScrollPos] = useState<number>(0)
     const navHandler = () => {
         if (section === "Experience") {
             return (
@@ -21,7 +20,8 @@ export default function Home({experiences, projects}) {
                     end_date: string;
                     start_date: string;
                     company_url: string,
-                    responsibilities: string[]; }) => {
+                    responsibilities: string[];
+                }) => {
                     return (
                         <Experience
                             key={el._id}
@@ -42,7 +42,8 @@ export default function Home({experiences, projects}) {
                 github_url: string;
                 demo_url: string;
                 description: string;
-                stack: string[]; }) => {
+                stack: string[];
+            }, index:number) => {
                 return (
                     <Project
                         key={el._id}
@@ -50,6 +51,7 @@ export default function Home({experiences, projects}) {
                         github={el.github_url}
                         demo={el.demo_url}
                         stack={el.stack}
+                        imageIndex={index + 1}
                         description={el.description}
                     />
                 )
@@ -57,22 +59,27 @@ export default function Home({experiences, projects}) {
         }
     }
 
+    const scrollTop = ():void => {
+        window.scrollTo(0, 0)
+    }
+
+    useEffect(():void => {
+        window.addEventListener("scroll", () => {
+            setScrollPos(window.scrollY);
+        })
+    }, [scrollPos])
+
     return (
         <>
-            <Head>
-                <title>Dominykas Rutkauskas</title>
-                <link rel="icon" href="/favicon.ico"/>
-            </Head>
-            <Header/>
-            <main>
-                <Introduction/>
-                <Nav section={section} setSection={setSection}/>
-                <section className="group/side">
-                    <ul className="flex flex-wrap max-w-2xl mx-auto card:max-w-full card:m-auto [&>*]:group-hover/side:hover:opacity-50">
+            <Introduction/>
+            <Nav section={section} setSection={setSection}/>
+            <section className="group/side">
+                <ul className="flex flex-wrap max-w-2xl mx-auto card:max-w-full card:m-auto [&>*]:group-hover/side:hover:opacity-50">
                     {navHandler()}
-                    </ul>
-                </section>
-            </main>
+                    {section === "Experience" ? <li className="text-white font-semibold customHover hover:text-teal-400 text-xl mx-6 sm:mx-12"><a href="/pdfs/Resume.pdf" target="_blank">View full resume</a></li> : null}
+                </ul>
+            </section>
+            {scrollPos >= 1500 ? <button className="fixed text-teal-400 z-10 p-5 rounded-full bg-teal-400/20 bottom-8 right-5 hover:bg-teal-400/70 transition-colors" onClick={scrollTop}><TopRightArrowIcon scrollToTop/></button> : null}
         </>
     )
 }
