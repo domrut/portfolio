@@ -1,6 +1,6 @@
 export default function Linkedin() {
     return (
-        <a className="group/icon ml-5" href="https://linkedin.com/in/dominykas-rutkauskas-2bb282166/">
+        <a className="group/icon ml-5" aria-label="LinkedIn" href="https://linkedin.com/in/dominykas-rutkauskas-2bb282166/">
             <svg className="w-[25px] h-[25px] sm:w-[30px] sm:h-[30-px]" width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path className="group-hover/icon:fill-teal-400" d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z" fill="#fff"/>
                 <path className="group-hover/icon:fill-teal-400" d="M5 10C5 9.44772 5.44772 9 6 9H7C7.55228 9 8 9.44771 8 10V18C8 18.5523 7.55228 19 7 19H6C5.44772 19 5 18.5523 5 18V10Z" fill="#fff"/>

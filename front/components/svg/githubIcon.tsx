@@ -1,6 +1,6 @@
 export default function GithubIcon() {
     return (
-        <a className="group/icon" href="https://github.com/domrut">
+        <a className="group/icon" aria-label="GitHub" href="https://github.com/domrut">
             <svg className="w-[25px] h-[25px] sm:w-[30px] sm:h-[30-px]" width="30px" height="30px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g className="group-hover/icon:fill-teal-400" id="Dribbble-Light-Preview" transform="translate(-140.000000, -7559.000000)" fill="#fff">
