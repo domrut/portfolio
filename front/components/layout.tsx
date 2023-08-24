@@ -27,6 +27,7 @@ export default function Layout({children}: PropsWithChildren) {
                 {children}
             </main>
             <Footer/>
+            <Analytics/>
         </div>
     )
 }
