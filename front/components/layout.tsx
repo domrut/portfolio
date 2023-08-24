@@ -18,6 +18,7 @@ export default function Layout({children}: PropsWithChildren) {
                 <meta key="robots" name="robots" content="all" />
                 <meta key="googlebot" name="googlebot" content="all" />
                 <meta name="google" content="notranslate" />
+                <link rel="canonical" href="https://www.drutkauskas.com/" />
                 <meta name="google" content="nositelinkssearchbox" />
             </Head>
             <Header/>
