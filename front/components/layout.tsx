@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "./header";
 import Footer from "./footer";
 import { Montserrat } from "next/font/google";
+import { Analytics } from '@vercel/analytics/react'
 
 const montserrat = Montserrat({
     weight: ['400', '700', '500'],
