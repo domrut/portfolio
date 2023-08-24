@@ -7,7 +7,7 @@ import JsIcon from "./svg/jsIcon";
 
 export default function Introduction () {
     return (
-        <section className="my-10 text-slate-400 text-base sm:text-[18px] w-[900px] tracking-wide max-w-4xl">
+        <section className="my-10 text-slate-400 text-base sm:text-[18px] tracking-wide max-w-4xl">
             <section>
                 <p>
                     <span className="text-white font-semibold">Hello</span>, meet me, an intermediate Front-End developer with a passion for crafting captivating digital experiences. With a solid foundation in web development, I have honed the skills through <span className="text-white font-semibold">hands-on experience</span> building web applications. My journey is marked by <a href="https://github.com/domrut" className="text-white font-semibold hover:text-teal-400">personal projects</a>, where I've taken the initiative continuously expand my skill set through self-directed learning.</p>
