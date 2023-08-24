@@ -15,8 +15,8 @@ export default function Layout({children}: PropsWithChildren) {
                 <title>Dominykas Rutkauskas</title>
                 <link rel="icon" href="/favicon.ico"/>
                 <meta name="description" content="Portfolio page for Dominykas Rutkauskas" />
-                <meta key="robots" name="robots" content="noindex,follow" />
-                <meta key="googlebot" name="googlebot" content="noindex,follow" />
+                <meta key="robots" name="robots" content="all" />
+                <meta key="googlebot" name="googlebot" content="all" />
             </Head>
             <Header/>
             <main>
