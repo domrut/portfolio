@@ -9,7 +9,7 @@ import TopRightArrowIcon from "../components/svg/topRightArrow";
 
 export default function Home({experiences, projects}) {
     const [section, setSection] = useState<string>("Experience");
-    const [scrollPos, setScrollPos] = useState<number>(0)
+    const [showButton, setShowButton] = useState<boolean>(false)
     const navHandler = () => {
         if (section === "Experience") {
             return (
@@ -63,11 +63,16 @@ export default function Home({experiences, projects}) {
         window.scrollTo(0, 0)
     }
 
-    useEffect(():void => {
-        window.addEventListener("scroll", () => {
-            setScrollPos(window.scrollY);
-        })
-    }, [scrollPos])
+    const handleScroll = ():void => {
+        document.documentElement.scrollTop <= 1500 ? setShowButton(false) : setShowButton(true)
+    }
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll)
+        return ():void => {
+            window.removeEventListener("scroll", handleScroll);
+        }
+    }, [])
 
     return (
         <>
@@ -79,7 +84,7 @@ export default function Home({experiences, projects}) {
                     {section === "Experience" ? <li className="text-white font-semibold customHover hover:text-teal-400 text-xl mx-6 sm:mx-12"><a href="/pdfs/Resume.pdf" target="_blank">View full resume</a></li> : null}
                 </ul>
             </section>
-            {scrollPos >= 1500 ? <button className="fixed text-teal-400 z-10 p-5 rounded-full bg-teal-400/20 bottom-8 right-5 hover:bg-teal-400/70 transition-colors" onClick={scrollTop}><TopRightArrowIcon scrollToTop/></button> : null}
+            {showButton ? <button className="fixed text-teal-400 z-10 p-5 rounded-full bg-teal-400/20 bottom-8 right-5 hover:bg-teal-400/70 transition-colors" onClick={scrollTop}><TopRightArrowIcon scrollToTop/></button> : null}
         </>
     )
 }
