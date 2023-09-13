@@ -9,27 +9,27 @@ module.exports = {
   theme: {
     extend: {
       maxWidth: {
-        "container": "97rem"
+        container: "97rem",
       },
       flex: {
-        '1': '1 1 0%',
-        '2': '2 1 0%',
-        '3': '3 1 0%',
-        '4': '4 1 0%',
-        '5': '5 1 0%'
+        1: "1 1 0%",
+        2: "2 1 0%",
+        3: "3 1 0%",
+        4: "4 1 0%",
+        5: "5 1 0%",
       },
       boxShadow: {
-        'button': '0 0 20px rgba(45,212,191,1)',
-        'card': '0 0 20px rgba(0,0,0,0.35)'
+        button: "0 0 20px rgba(45,212,191,1)",
+        card: "0 0 20px rgba(0,0,0,0.35)",
       },
       backgroundColor: {
-        'cardHover': "rgba(30, 41, 59, 0.35)",
+        cardHover: "rgba(30, 41, 59, 0.35)",
       },
       screens: {
-        "card": "1510px"
-      }
+        card: "1510px",
+        "hover-hover": { raw: "(hover: hover)" },
+      },
     },
   },
   plugins: [],
-}
-
+};
